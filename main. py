@@ -1,0 +1,15 @@
+from fastapi import FastAPI
+import random
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"status": "LIVE"}
+
+@app.get("/signal")
+def signal():
+    return {
+        "signal": random.choice(["BUY", "SELL"]),
+        "confidence": round(random.uniform(0.6, 0.9), 2)
+    }
